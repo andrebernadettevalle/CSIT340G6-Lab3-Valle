@@ -1,4 +1,4 @@
-// Step 1.3: Course information step 3
+// Step 1.3: Course information step 3 completed
 
 // Header Component
 const Header = (props) => {
