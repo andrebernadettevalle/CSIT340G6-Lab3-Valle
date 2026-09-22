@@ -1,3 +1,5 @@
+// Step 1.3: Course information step 3
+
 // Header Component
 const Header = (props) => {
   return <h1>{props.course}</h1>
@@ -12,20 +14,20 @@ const Part = (props) => {
   )
 }
 
-// Content Component
+// Content Component - Renders parts array dynamically
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.parts[0]} />
-      <Part part={props.parts[1]} />
-      <Part part={props.parts[2]} />
+      {props.parts.map((part, index) => (
+        <Part key={index} part={part} />
+      ))}
     </div>
   )
 }
 
-// Total Component
+// Total Component - Dynamically sums all exercises
 const Total = (props) => {
-  const total = props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises
+  const total = props.parts.reduce((sum, part) => sum + part.exercises, 0)
   return <p>Number of exercises: {total}</p>
 }
 
@@ -58,9 +60,9 @@ const App = () => {
   }
 
   const studentInfo = {
-    fullName: 'Andre Bernadette Valle', 
+    fullName: 'Andre Bernadette Valle',
     code: 'CSIT340',
-    sec: 'G6'                 
+    sec: 'G6'
   }
 
   return (
